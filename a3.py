@@ -250,8 +250,12 @@ def search_pa_list(src: List[str]) -> List[str]:
         a list of answers. Will be ["I don't understand"] if it finds no matches and
         ["No answers"] if it finds a match but no answers
     """
-    pass
-
+    for pat,act in pa_list:
+        mat= match(pat,src)
+        if mat is not None:
+            answer= act(mat)
+            return answer if answer else ["No answers"]
+    return ["I don't understand"]
 
 def query_loop() -> None:
     """The simple query loop. The try/except structure is to catch Ctrl-C or Ctrl-D
@@ -332,5 +336,6 @@ if __name__ == "__main__":
     assert sorted(
         search_pa_list(["what", "movies", "were", "made", "in", "2020"])
     ) == sorted(["No answers"]), "failed search_pa_list test 3"
-
+    assert sorted(actors_by_director(["steven spielberg"])
+    ) == sorted(["roy scheider","robert shaw", "richard dreyfuss","lorraine gary","murray hamilton",]), "failed actor_by_director test"
     print("All tests passed!")
