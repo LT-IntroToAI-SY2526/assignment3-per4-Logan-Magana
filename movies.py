@@ -435,4 +435,17 @@ movie_db: List[Tuple[str, str, int, List[str]]] = [
             "spike lee",
         ],
     ),
+    (
+        "spider-man",
+        "sam raimi",
+        2002,
+        [
+            "tobey maguire",
+            "kirsten dunst",
+            "willem dafoe",
+            "james franco",
+            "elizabeth banks",
+            "joe manganiello",
+        ],
+    ),
 ]
